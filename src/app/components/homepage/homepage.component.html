@@ -1,0 +1,27 @@
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button (click)="uploadFileToActivity()" class="btn btn-outline-secondary" type="button" id="file">Carica</button>
+    </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="file" (change)="handleFileInput($event.target.files)">
+      <label class="custom-file-label" for="file">Scegli file</label>
+    </div>
+  </div>
+  <div class="alert alert-primary" role="alert" *ngIf=alert>
+    <h1> Your Image ID is : </h1>
+  </div>
+  <div class="container row">
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="imageName" placeholder="Scegli file" [(ngModel)]="imageName" />
+    </div>
+
+    <div class="col-md-6">
+      <input type="button" [routerLink]="['showimage/qr', imageName]" value="Recupera immagine"
+        class="btn btn-outline-secondary">
+    </div>
+  </div>
+  <div class="card-body text-center">
+    <div *ngIf=retrievedImage>
+      <img [src]="retrievedImage" class="figure-img img-fluid rounded justify-content-center">
+    </div>
+  </div>
